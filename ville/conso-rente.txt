@@ -1,0 +1,4 @@
+Fichier réel ville/conso-rente.txt.
+Après preview + sdk.
+0 JUGE.md seul.
+Carl merge. NE MERGE PAS auto.
