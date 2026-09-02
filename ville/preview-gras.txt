@@ -1,0 +1,5 @@
+Ville preview — gras
+Linked from unforge PR #33 merge (bloc/p-gras).
+PREVIEW ≠ quittance UNFORGE.
+Historique bloc/* intact.
+Mac once. Carl merge. NE MERGE PAS auto.
