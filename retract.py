@@ -359,6 +359,8 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     _émettre(rec, args.human)
+    if rec.get("erreur") == "json":
+        return 2
     return 0 if rec.get("ok") else 1
 
 
