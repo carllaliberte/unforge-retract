@@ -1,0 +1,14 @@
+{
+  "format": "UNFORGE-RETRAIT-v1",
+  "marque": "UNFORGE",
+  "preuve_id": "QT-PR-DEMO0001",
+  "card_id": "QT-EM-DEMO0001",
+  "token_id": "QT-JK-DEMO0001",
+  "empreinte": "985d3ff3389f8c64c87eeb829ccebf4ae09b943fd3500e442614b1e1731498e5",
+  "empreinte_cible": "985d3ff3389f8c64c87eeb829ccebf4ae09b943fd3500e442614b1e1731498e5",
+  "materiau": "RETRAIT|QT-PR-DEMO0001|QT-EM-DEMO0001|985d3ff3389f8c64c87eeb829ccebf4ae09b943fd3500e442614b1e1731498e5",
+  "signature": "",
+  "card_label": "demo",
+  "card_public": "N4ZSIvO33mSihHkZtXG4AzBxkE5sFzMs9l7Px9qgc68",
+  "note": "Unsigned public draft. Sign materiau on private QUANTUM, same card. Not Carl's node."
+}

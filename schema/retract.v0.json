@@ -1,0 +1,52 @@
+{
+  "$id": "https://github.com/carllaliberte/unforge-retract/schema/retract.v0.json",
+  "title": "unforge.retract.v0",
+  "description": "Record returned by UNFORGE Retract. Local process. No server. ok: true means a UNFORGE-RETRAIT-v1 binds to the card (same id, card_id, empreinte, materiau). History stays. Not a delete. Not a match (unforge-check). Not a print (unforge-press). Signature is not opened here.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["ok", "geste"],
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "description": "Withdrawal binds to the published proof, or a brouillon was written. Not a file-match verdict. Not a seal. Not a burn."
+    },
+    "geste": { "const": "retract" },
+    "schema": { "const": "retract.v0" },
+    "preuve_id": { "type": ["string", "null"] },
+    "card_id": { "type": ["string", "null"] },
+    "token_id": { "type": ["string", "null"] },
+    "empreinte": {
+      "type": ["string", "null"],
+      "description": "Card fingerprint copied from the proof. Not recomputed. Not a seal."
+    },
+    "materiau": {
+      "type": "string",
+      "description": "RETRAIT|{id}|{card_id}|{empreinte}. Signed on QUANTUM, not here."
+    },
+    "materiau_ok": { "type": "boolean" },
+    "memes": { "type": "boolean" },
+    "signe": {
+      "type": "boolean",
+      "description": "signature field is non-empty. Presence only — this repo does not open it."
+    },
+    "signature_ouverte": {
+      "const": false,
+      "description": "Retract does not verify Ed25519 or UFHY1. Check does."
+    },
+    "statut": {
+      "type": "string",
+      "description": "brouillon | retiré | retrait-invalide | existe"
+    },
+    "histoire": { "const": "la preuve reste ; le retrait s'ajoute" },
+    "retract": {
+      "type": "string",
+      "description": "Path of the .retrait.json when written or bound."
+    },
+    "marque": { "const": "UNFORGE" },
+    "noeud": { "const": "non requis" },
+    "phrase": { "type": "string" },
+    "erreur": { "type": "string" },
+    "attendu": { "type": "string" },
+    "detail": { "type": "string" }
+  }
+}
