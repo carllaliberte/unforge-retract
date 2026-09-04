@@ -1,0 +1,7 @@
+Ville preview — architecture
+Linked from famille PR #99 merge.
+ARCHITECTURE — modulaire, pas de sur-ingénierie PQC.
+Classique par défaut. Joints modulaires. Pas de PQC shippée.
+PREVIEW ≠ quittance UNFORGE.
+Historique intact. Retrait reste à côté.
+Carl merge. NE MERGE PAS.
