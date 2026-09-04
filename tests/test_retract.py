@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""UNFORGE Retract — public withdrawal. History stays. Signature stays closed."""
+"""UNFORGE Retract — withdrawal beside the card. History stays. Signature stays closed."""
 from __future__ import annotations
 
 import json
@@ -109,6 +109,7 @@ class Bind(unittest.TestCase):
         self.assertEqual(rec["histoire"], "la preuve reste ; le retrait s'ajoute")
         self.assertEqual(rec["noeud"], "non requis")
         self.assertIn("reste", rec["phrase"])
+        self.assertIn("à côté de la carte", rec["phrase"])
 
     def test_preuve_inchangee(self):
         avant = CARTE.read_bytes()
@@ -361,6 +362,94 @@ class CLI(unittest.TestCase):
         self.assertEqual(r.returncode, 1)
         rec = json.loads(r.stdout)
         self.assertEqual(rec["erreur"], "liaison")
+
+
+class DoorCopy(unittest.TestCase):
+    """Public door: withdrawal beside the card. ok:true is a field bind."""
+
+    DOORS = (
+        ROOT / "README.md",
+        ROOT / "INTEROP.md",
+        ROOT / "SPEC.md",
+        ROOT / "PREVIEW.md",
+        ROOT / "examples" / "README.md",
+        ROOT / "retract.py",
+        ROOT / "schema" / "retract.v0.json",
+    )
+
+    def _text(self, path: Path) -> str:
+        return path.read_text(encoding="utf-8")
+
+    def _doors(self) -> str:
+        return "\n".join(self._text(p) for p in self.DOORS)
+
+    def test_readme_leads_withdrawal_beside_the_card(self):
+        readme = self._text(ROOT / "README.md")
+        lead = readme.split("```", 1)[0]
+        self.assertIn("Withdrawal beside the card", lead)
+        self.assertIn("ok: true", readme)
+        self.assertIn("fields bind", readme)
+        self.assertIn("card shape holds", readme)
+        self.assertIn("not a QUANTUM signature", readme)
+
+    def test_help_is_withdrawal_beside_the_card(self):
+        r = _run(["--help"])
+        self.assertEqual(r.returncode, 0, r.stderr)
+        help_txt = r.stdout
+        self.assertIn("withdrawal beside the card", help_txt)
+        self.assertIn("field bind", help_txt)
+        self.assertIn("card shape holds", help_txt)
+        self.assertNotIn("signed withdrawal", help_txt.lower())
+
+    def test_doors_say_withdrawal_beside_the_card(self):
+        for path in self.DOORS:
+            text = self._text(path)
+            self.assertIn(
+                "withdrawal beside the card",
+                text.lower(),
+                f"{path.name} must say withdrawal beside the card",
+            )
+            self.assertNotIn("signed withdrawal", text.lower(), path.name)
+            self.assertNotIn("Imagine", text)
+            self.assertNotIn("formally verified", text.lower())
+
+    def test_ok_true_is_field_bind_not_quantum_signature(self):
+        rec = verifier(CARTE, RETRAIT)
+        self.assertTrue(rec["ok"])
+        self.assertFalse(rec["signe"])
+        self.assertFalse(rec["signature_ouverte"])
+        self.assertEqual(json.loads(RETRAIT.read_text(encoding="utf-8"))["signature"], "")
+        self.assertIn("à côté de la carte", rec["phrase"])
+        self.assertIn("champs lient", rec["phrase"])
+
+        interop = self._text(ROOT / "INTEROP.md")
+        self.assertIn("field bind", interop)
+        self.assertIn("card shape holds", interop)
+        self.assertIn("not a QUANTUM signature", interop)
+
+        schema_txt = self._text(ROOT / "schema" / "retract.v0.json")
+        self.assertIn("field bind", schema_txt)
+        self.assertIn("card shape holds", schema_txt)
+        self.assertIn("Not a QUANTUM signature", schema_txt)
+
+        doors = self._doors().lower()
+        self.assertNotIn("signed quantum withdrawal", doors)
+        self.assertNotIn("ok: true is a signed", doors)
+        self.assertNotIn("ok: true means quantum signed", doors)
+
+    def test_schema_ok_is_field_bind(self):
+        s = schema()
+        desc = s["description"].lower()
+        ok = s["properties"]["ok"]["description"].lower()
+        self.assertIn("withdrawal beside the card", desc)
+        self.assertIn("field bind", desc)
+        self.assertIn("card shape holds", desc)
+        self.assertIn("not a quantum signature", desc)
+        self.assertIn("fields bind", ok)
+        self.assertIn("card shape holds", ok)
+        self.assertIn("not a quantum signature", ok)
+        self.assertNotIn("imagine", desc)
+        self.assertNotIn("formally verified", desc)
 
 
 if __name__ == "__main__":

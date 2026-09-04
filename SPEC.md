@@ -1,5 +1,7 @@
 # UNFORGE-RETRAIT-v1
 
+Withdrawal beside the card.
+
 A retract is a JSON file named `*.retrait.json` sitting beside the `*.unforge.json` it withdraws.
 
 The proof stays. The retract is added. This is a withdrawal, not a delete, not a burn, not a consume.
@@ -23,5 +25,6 @@ Roles:
 - Press does not open the signature; it prints ids. `IMPRIMÉ` = paper.
 - Trail compares SHAs across one-passage stamps; it does not re-sign. A retract beside a stamp is noted. History stays.
 - Retract records the withdrawal and binds card fields. It does not erase the proof.
+- `ok: true` is a field bind — card shape holds. Not a QUANTUM signature. QUANTUM fills the signature later.
 
 Do not merge check, press, or trail into this repository. Interop is the card.
