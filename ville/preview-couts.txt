@@ -1,0 +1,8 @@
+Ville preview — couts
+Linked from famille PR #96 merge (bot: COUTS — compute léger, Carl tient les chiffres).
+Cursor léger. Pas de Heavy par défaut. Carl tient les chiffres. Bots laissent le tiret.
+Pas de nombre inventé. Pas de 7e chantier.
+PREVIEW ≠ quittance UNFORGE.
+Preview ≠ receipt. Unforge does not sign.
+Historique intact. Retrait reste à côté.
+Carl squash. NE MERGE PAS.
