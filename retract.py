@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""UNFORGE Retract — signed withdrawal, history kept.
+"""UNFORGE Retract — withdrawal beside the card.
 
 Records a UNFORGE-RETRAIT-v1 beside a card. Does not erase the proof.
-Does not open the signature. Does not sign. Not a seal. Not QUANTUM.
+Does not open the signature. Does not sign. Not a seal. Not a burn. Not QUANTUM.
+ok: true is a field bind — card shape holds. QUANTUM fills the signature later.
 No node. No cloud. No coin.
 """
 from __future__ import annotations
@@ -86,9 +87,9 @@ def phrase_retract(rec: dict) -> str:
     if err in phrases:
         return phrases[err]
     if rec.get("ok") and rec.get("statut") == "brouillon":
-        return "brouillon inscrit. signer le matériau sur QUANTUM. la preuve reste."
+        return "brouillon à côté de la carte. signer le matériau sur QUANTUM. la preuve reste."
     if rec.get("ok"):
-        return "retrait lié. la preuve reste ; le retrait s'ajoute."
+        return "retrait à côté de la carte. les champs lient ; la preuve reste."
     if err:
         return str(err)
     return "refus."
@@ -254,8 +255,9 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(
         prog="retract.py",
         description=(
-            "UNFORGE Retract — record a signed withdrawal beside a published proof. "
-            "History stays. No node. No cloud. No coin. Does not open the signature."
+            "UNFORGE Retract — withdrawal beside the card. "
+            "History stays. No node. No cloud. No coin. Does not open the signature. "
+            "Does not sign. Not a seal. Not a burn. Not QUANTUM."
         ),
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=(
@@ -269,7 +271,8 @@ def main(argv: list[str] | None = None) -> int:
             "One path writes FILE.retrait.json (brouillon) if none sits beside the card.\n"
             "If a retract is already there, the same command binds it — it does not overwrite.\n"
             "Exit 0 = recorded or bound. Exit 1 = refuse. Exit 2 = unreadable.\n"
-            "ok: true is a withdrawal binding, not a file match (check) and not a print (press).\n"
+            "ok: true is a field bind — card shape holds. Not a QUANTUM signature.\n"
+            "QUANTUM fills the signature later. Not a file match (check) and not a print (press).\n"
             "Agents: python3 retract.py --schema   or   from retract import verifier"
         ),
     )

@@ -1,5 +1,7 @@
 # Example
 
+Withdrawal beside the card. The retract fixture is an unsigned brouillon.
+
 ```bash
 python3 retract.py examples/bienvenue.txt.unforge.json
 python3 retract.py examples/bienvenue.txt

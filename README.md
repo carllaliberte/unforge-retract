@@ -1,11 +1,11 @@
 # UNFORGE Retract
 
-Withdraw a proof without erasing it.
+Withdrawal beside the card.
 
 ```bash
 python3 retract.py examples/bienvenue.txt.unforge.json
 # writes examples/bienvenue.txt.retrait.json — brouillon, same card
-# sign materiau on private QUANTUM, same card
+# QUANTUM fills the signature later, same card
 python3 retract.py examples/bienvenue.txt.unforge.json examples/bienvenue.txt.retrait.json
 ```
 
@@ -21,6 +21,9 @@ Machine record on stdout (`retract.v0`). `--human` prints `RETIRÉ` / `BROUILLON
 `statut: retiré` — same card, same id, same empreinte.
 The original file stays. The retract sits beside it.
 
+`ok: true` means fields bind — card shape holds. It is not a QUANTUM signature.
+QUANTUM fills the signature later. This rail does not sign.
+
 Retract binds card fields. It does not open the signature.
 Match the file with [unforge-check](https://github.com/carllaliberte/unforge-check). Check’s `VERT` means the file matches the card — not a quantum claim.
 Print ids with [unforge-press](https://github.com/carllaliberte/unforge-press). `IMPRIMÉ` is paper.
@@ -28,5 +31,5 @@ Itinerary of stamps: [unforge-trail](https://github.com/carllaliberte/unforge-tr
 
 Agents: `python3 retract.py --schema` · `from retract import verifier` · [INTEROP.md](INTEROP.md).
 
-No node. No cloud. No coin. This is not a seal. Not a burn.
+No node. No cloud. No coin. This is not a seal. Not a burn. Not QUANTUM.
 Brand UNFORGE reserved. Code: Apache-2.0.

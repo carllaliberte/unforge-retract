@@ -1,12 +1,14 @@
 # Interop — no server
 
-Other agents and tools record a withdrawal with a local process. No node. No cloud. No coin. Nothing here signs.
+Withdrawal beside the card.
+
+Other agents and tools record a withdrawal with a local process. No node. No cloud. No coin. Nothing here signs. QUANTUM fills the signature later.
 
 Retract binds a `UNFORGE-RETRAIT-v1` to a `UNFORGE-PREUVE-v1` card. It does not merge [check](https://github.com/carllaliberte/unforge-check), [press](https://github.com/carllaliberte/unforge-press), or [trail](https://github.com/carllaliberte/unforge-trail). The card is the join:
 
 | Rail | What it does with the card |
 |---|---|
-| Retract | withdrawal sits beside the proof; history stays |
+| Retract | withdrawal beside the card; history stays |
 | Check | one card — empreinte + signature + file (`VERT` = match) |
 | Press | print ids (`IMPRIMÉ` = paper, not a match) |
 | Trail | itinerary — same SHA-256, each `id` burned once |
@@ -35,7 +37,7 @@ assert carte["format"] == "UNFORGE-RETRAIT-v1"
 assert carte["signature"] == ""          # QUANTUM fills this
 
 rec = verifier(Path("doc.pdf.unforge.json"), Path("doc.pdf.retrait.json"))
-assert rec["ok"] is True                 # binding, not a file match
+assert rec["ok"] is True                 # field bind — card shape holds, not a QUANTUM signature
 assert rec["geste"] == "retract"
 assert rec["signature_ouverte"] is False
 schema()                                 # retract.v0
@@ -51,7 +53,7 @@ schema()                                 # retract.v0
 | 1 | refuse (format, itinerary, liaison, materiau, already there) |
 | 2 | unreadable (missing path, bad JSON) |
 
-`ok: true` is a **withdrawal binding**. It is not a file match ([unforge-check](https://github.com/carllaliberte/unforge-check) `VERT`). It is not a print ([unforge-press](https://github.com/carllaliberte/unforge-press) `IMPRIMÉ`). A trail itinerary is refused here — retract one card.
+`ok: true` is a **field bind** — card shape holds. It is not a QUANTUM signature. QUANTUM fills the signature later. It is not a file match ([unforge-check](https://github.com/carllaliberte/unforge-check) `VERT`). It is not a print ([unforge-press](https://github.com/carllaliberte/unforge-press) `IMPRIMÉ`). A trail itinerary is refused here — retract one card.
 
 ## Record
 

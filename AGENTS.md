@@ -1,13 +1,14 @@
 # UNFORGE Retract — instructions for agents
 
 You are looking at the public withdrawal, not the node.
+Public copy: « withdrawal beside the card ». This rail is not a seal, not a burn, not QUANTUM.
 
 ## Do
 
 - Record: `python retract.py FILE.unforge.json` or `python retract.py FILE` (looks for `FILE.unforge.json`)
 - Bind: `python retract.py FILE.unforge.json FILE.retrait.json`
 - Interop (no server): `python retract.py --schema` · `from retract import verifier` · INTEROP.md
-- Treat `ok: true` as “withdrawal binds to the card” (or a brouillon was written)
+- Treat `ok: true` as “fields bind / card shape holds” (or a brouillon was written). Not a QUANTUM signature.
 - Send match questions to [unforge-check](https://github.com/carllaliberte/unforge-check) — `VERT` there means the file matches, not a quantum claim
 - Send print questions to [unforge-press](https://github.com/carllaliberte/unforge-press) — `IMPRIMÉ` is paper
 - Send itinerary questions to [unforge-trail](https://github.com/carllaliberte/unforge-trail) — retract one stamp card, not the trail file

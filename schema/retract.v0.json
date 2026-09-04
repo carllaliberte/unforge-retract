@@ -1,14 +1,14 @@
 {
   "$id": "https://github.com/carllaliberte/unforge-retract/schema/retract.v0.json",
   "title": "unforge.retract.v0",
-  "description": "Record returned by UNFORGE Retract. Local process. No server. ok: true means a UNFORGE-RETRAIT-v1 binds to the card (same id, card_id, empreinte, materiau). History stays. Not a delete. Not a match (unforge-check). Not a print (unforge-press). Signature is not opened here.",
+  "description": "Withdrawal beside the card. Record returned by UNFORGE Retract. Local process. No server. ok: true is a field bind — card shape holds (same id, card_id, empreinte, materiau). Not a QUANTUM signature. QUANTUM fills the signature later. History stays. Not a delete. Not a match (unforge-check). Not a print (unforge-press). Signature is not opened here.",
   "type": "object",
   "additionalProperties": true,
   "required": ["ok", "geste"],
   "properties": {
     "ok": {
       "type": "boolean",
-      "description": "Withdrawal binds to the published proof, or a brouillon was written. Not a file-match verdict. Not a seal. Not a burn."
+      "description": "Fields bind — card shape holds, or a brouillon was written beside the card. Not a QUANTUM signature. Not a file-match verdict. Not a seal. Not a burn."
     },
     "geste": { "const": "retract" },
     "schema": { "const": "retract.v0" },
