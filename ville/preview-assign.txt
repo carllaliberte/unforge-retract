@@ -1,0 +1,6 @@
+Ville preview — assign
+Linked from famille PR #91 merge (bot: ASSIGN — ouvre, critères, réassigne).
+PREVIEW ≠ quittance UNFORGE.
+Preview ≠ receipt. Unforge does not sign.
+Historique intact. Retrait reste à côté.
+Carl merge. NE MERGE PAS auto.
