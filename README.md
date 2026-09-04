@@ -22,6 +22,7 @@ Machine record on stdout (`retract.v0`). `--human` prints `RETIRÉ` / `BROUILLON
 The original file stays. The retract sits beside it.
 
 `ok: true` means fields bind — card shape holds. It is not a QUANTUM signature.
+Withdrawal is a field bind. It is not a cryptographic signature: this rail does not verify one.
 QUANTUM fills the signature later. This rail does not sign.
 
 Retract binds card fields. It does not open the signature.
@@ -32,4 +33,6 @@ Itinerary of stamps: [unforge-trail](https://github.com/carllaliberte/unforge-tr
 Agents: `python3 retract.py --schema` · `from retract import verifier` · [INTEROP.md](INTEROP.md).
 
 No node. No cloud. No coin. This is not a seal. Not a burn. Not QUANTUM.
-Brand UNFORGE reserved. Code: Apache-2.0.
+Brand UNFORGE reserved. Code: Apache-2.0 — LICENSE, NOTICE, COPYRIGHT.md.
+This license does not grant rights in the name UNFORGE or in QUANTUM.
+QUANTUM is not licensed here.
